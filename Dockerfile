@@ -1,8 +1,8 @@
-FROM php:8.4-cli
+FROM php:8.4-cli-alpine
 
-RUN apt-get update && apt-get install -y \
+RUN apk add --no-cache \
     libzip-dev \
-    libsqlite3-dev \
+    sqlite-dev \
     libxml2-dev \
     unzip \
     curl \
@@ -12,8 +12,7 @@ RUN apt-get update && apt-get install -y \
         mbstring \
         xml \
         zip \
-        opcache \
-    && apt-get clean && rm -rf /var/lib/apt/lists/*
+        opcache
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
