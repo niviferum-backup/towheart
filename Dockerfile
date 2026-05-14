@@ -2,15 +2,9 @@ FROM php:8.4-cli-alpine
 
 RUN apk add --no-cache \
     libzip-dev \
-    sqlite-dev \
-    libxml2-dev \
     unzip \
     curl \
     && docker-php-ext-install \
-        pdo \
-        pdo_sqlite \
-        mbstring \
-        xml \
         zip \
         opcache
 
